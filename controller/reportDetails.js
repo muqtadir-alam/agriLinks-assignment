@@ -44,7 +44,7 @@ module.exports = {
 	getReports: async (req, res) => {
 		try {
 			const { cmdtyID } = req.query;
-			const reportData = await reportDetailsModel.aggregate([
+			const agr = [
 				{
 					$group: {
 						_id: {
@@ -76,8 +76,14 @@ module.exports = {
 						},
 					},
 				},
-			]);
-			return res.status(200).json({ status: 'success', data: reportData });
+			];
+			if (cmdtyID) {
+				const reportData = await reportDetailsModel.aggregate(agr);
+				return res.status(200).json({ status: 'success', data: reportData });
+			} else {
+				const data = await reportDetailsModel.find();
+				return res.status(200).json({ status: 'success', data: data });
+			}
 		} catch (error) {
 			console.log('error::::::', error);
 			return res.status(500).json({ status: 'Server error' });
