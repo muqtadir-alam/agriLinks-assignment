@@ -1,0 +1,50 @@
+{
+"info": {
+"_postman_id": "f70a27ba-8bdc-4d94-b40c-c90515404ba1",
+"name": "Agrilink",
+"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+},
+"item": [
+{
+"name": "add-reports",
+"id": "4a395178-6e6b-4b88-beee-ad81a14dbbfb",
+"request": {
+"method": "POST",
+"header": [],
+"body": {
+"mode": "raw",
+"raw": "{\r\n    \"userID\": \"user-1\",\r\n    \"marketID\": \"market-1\",\r\n    \"marketName\": \"Vashi Navi Mumbai\",\r\n    \"cmdtyID\": \"cmdty-1\",\r\n    \"marketType\": \"Mandi\",\r\n    \"cmdtyName\": \"Potato\",\r\n    \"priceUnit\": \"Pack\",\r\n    \"convFctr\": 50,\r\n    \"minPrice\": 700,\r\n    \"maxPrice\": 900\r\n\r\n}",
+"options": {
+"raw": {
+"language": "json"
+}
+}
+},
+"url": "http://localhost:4000/api/v1/reports"
+},
+"response": []
+},
+{
+"name": "get-reports",
+"id": "023c6d4c-efc7-4aaf-83c1-676a95f03fe6",
+"protocolProfileBehavior": {
+"disableBodyPruning": true
+},
+"request": {
+"method": "GET",
+"header": [],
+"body": {
+"mode": "raw",
+"raw": "{\r\n    \"userID\": \"user-1\",\r\n    \"marketID\": \"market-1\",\r\n    \"marketName\": \"Vashi Navi Mumbai\",\r\n    \"cmdtyID\": \"cmdty-1\",\r\n    \"marketType\": \"Mandi\",\r\n    \"cmdtyName\": \"Potato\",\r\n    \"priceUnit\": \"Pack\",\r\n    \"convFctr\": 50,\r\n    \"minPrice\": 700,\r\n    \"maxPrice\": 900\r\n\r\n}",
+"options": {
+"raw": {
+"language": "json"
+}
+}
+},
+"url": "http://localhost:4000/api/v1/reports"
+},
+"response": []
+}
+]
+}
