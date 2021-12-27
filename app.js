@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv');
 const mongoInit = require('./config/dbConnection');
-
+const cors = require('cors');
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 require('dotenv').config();
@@ -15,7 +15,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +28,20 @@ app.use('/', indexRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));
+});
+//cors
+app.all('*', function (req, res, next) {
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Content-type,Accept,X-Access-Token,X-Key'
+	);
+	if (req.method == 'OPTIONS') {
+		res.status(200).end();
+	} else {
+		next();
+	}
 });
 
 // error handler

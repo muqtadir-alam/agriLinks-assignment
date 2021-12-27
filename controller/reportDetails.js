@@ -65,10 +65,10 @@ module.exports = {
 						priceUnit: {
 							$first: '$priceUnit',
 						},
-						averageMaxPrice: {
+						maxPrice: {
 							$avg: '$maxPrice',
 						},
-						averageMinPrice: {
+						minPrice: {
 							$avg: '$minPrice',
 						},
 						users: {
@@ -76,7 +76,13 @@ module.exports = {
 						},
 					},
 				},
+				{
+					$addFields: {
+						timeSatmps: Date.now(),
+					},
+				},
 			];
+
 			if (cmdtyID) {
 				const reportData = await reportDetailsModel.aggregate(agr);
 				return res.status(200).json({ status: 'success', data: reportData });
@@ -85,7 +91,6 @@ module.exports = {
 				return res.status(200).json({ status: 'success', data: data });
 			}
 		} catch (error) {
-			console.log('error::::::', error);
 			return res.status(500).json({ status: 'Server error' });
 		}
 	},
