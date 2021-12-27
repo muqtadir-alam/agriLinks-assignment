@@ -8,3 +8,5 @@ go to root folder and type commands mentined below:
 for backend server start type : npm run server 
 for frontend server start type : npm run client 
 
+check postmanCollectionURL.txt for postman collection.
+
